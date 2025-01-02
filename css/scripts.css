@@ -6,7 +6,7 @@ body, h1, p, button, input {
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #56e2f4, #f5d300);
+    background: linear-gradient(135deg, #57b19f, #1b8471);
     color: #fff;
     overflow: hidden; 
     position: relative;
