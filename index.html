@@ -5,22 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Virtual Instrument</title>
     <link rel="stylesheet" href="css/scripts.css">
+
+    <script src="https://unpkg.com/tone@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.0.0/es6/core.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.0.0/es6/music_vae.js"></script>
+    <script src="js/scripts.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Audio Virtual Instrument</h1>
     </header>
     <main>
-        
         <div class="controls-container">
         
             <div id="uploadFileControls" class="control-section">
+                <h2>Sampler</h2>
                 <input type="file" id="fileInput" accept="audio/*">
                 <button id="playButton">Play Sample</button>
                 <button id="stopButton">Stop Sample</button>
+                <br>
+                <label>
+                    Volume:
+                    <input type="range" id="sampleVolume" min="0" max="1" step="0.01" value="0.8">
+                    <span id="sampleVolumeLabel"></span>
+                </label>
             </div>
 
-            <!-- Oscillator Controls -->
             <div id="oscillatorControls" class="control-section">
                 <h2>Oscillator</h2>
                 <label>
@@ -40,13 +52,31 @@
                 <br>
                 <label>
                     Duration (s):
-                    <input type="number" id="noteDuration" min="0.1" max="10" step="0.1" value="1">
+                    <input type="number" id="noteDuration" min="0.1" max="10" step="0.1" value="3">
                 </label>
                 <br>
                 <button id="playOscillatorButton">Play Oscillator</button>
+                <label>
+                    Volume:
+                    <input type="range" id="oscillatorVolume" min="0" max="1" step="0.01" value="0.8">
+                </label>
+                <br>
             </div>
 
-            <!-- Effect Controls -->
+            <div id="midiControls" class="control-section">
+                <h2>MIDI Generator</h2>
+                <button id="generateBtn">Generate Music</button>
+                <button id="playBtn" disabled>Play Music</button>
+                <label>
+                    Volume:
+                    <input type="range" id="midiVolume" min="0" max="1" step="0.01" value="0.8">
+                </label>
+                <div class="output">
+                    <p id="status">Status: Waiting for action...</p>
+                </div>
+                
+            </div>
+
             <div id="effectsControls" class="control-section">
                 <h2>Effects</h2>
                 <label>
@@ -56,7 +86,7 @@
                 <br>
                 <label>
                     Delay Time (s):
-                    <input type="number" id="delayTime" min="0" max="2" step="0.01" value="0">
+                    <input type="number" id="delayTime" min="0" max="10" step="0.01" value="0">
                 </label>
                 <br>
                 <label>
@@ -64,13 +94,12 @@
                     <input type="range" id="distortion" min="0" max="1" step="0.01" value="0">
                 </label>
             </div>
-        </div>
 
-        
+        </div> 
+
+        <!-- Waveform Display -->
         <canvas id="waveform" width="800" height="200"></canvas>
     </main>
-   
-    <script src="https://unpkg.com/tone@next"></script>
-    <script src="js/scripts.js"></script>
+
 </body>
 </html>
