@@ -1,48 +1,49 @@
-body, h1, p, button, input {
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+/* General body and layout */
+html, body {
+    height: 100%;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #57b19f, #1b8471);
+    background: linear-gradient(135deg, #57b19f, #2286aa);
     color: #fff;
-    overflow: hidden; 
+    overflow: hidden;
     position: relative;
-    height: 100vh; 
-    margin: 0;
 }
 
+/* Header styles */
 header {
     background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
     padding: 1em;
     text-align: center;
-    position: relative;
-    z-index: 2; 
+    z-index: 2;
 }
 
 header h1 {
     font-family: Consolas;
     font-size: 2.5em;
-    margin: 0;
 }
 
+/* Main content styles */
 main {
-    position: relative;
     padding: 1em;
-    z-index: 2; 
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Controls container layout */
 .controls-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px; 
+    max-width: 1200px;
     margin-bottom: 1em;
 }
 
@@ -50,11 +51,30 @@ main {
     flex: 1;
     padding: 1em;
     box-sizing: border-box;
+    text-align: center;
 }
 
+/* Control section titles */
+#effectsControls h2,
+#oscillatorControls h2,
+#midiControls h2,
+#samplerControls h2 {
+    margin-bottom: 0.5em;
+}
+
+/* Labels for controls */
+#effectsControls label,
+#oscillatorControls label,
+#midiControls label,
+#samplerControls label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+/* Input and button styling */
 button {
     background-color: #333;
-    color: #ffffff;
+    color: #fff;
     border: none;
     padding: 0.75em 1.5em;
     margin: 0.5em;
@@ -68,61 +88,50 @@ button:hover {
     background-color: #555;
 }
 
-
-#effectsControls {
-    text-align: center;
-}
-
-#effectsControls h2 {
-    margin-bottom: 0.5em;
-}
-
-#effectsControls label {
-    display: block;
-    margin: 0.5em 0;
-}
-
-#effectsControls input[type="range"],
-#effectsControls input[type="number"] {
+input[type="range"], input[type="number"] {
     width: 100%;
 }
 
-#effectsControls input[type="number"] {
+input[type="number"] {
     width: 80px;
     display: inline-block;
     margin-left: 0.5em;
 }
 
-
-#oscillatorControls {
-    text-align: center;
-}
-
-#oscillatorControls h2 {
-    margin-bottom: 0.5em;
-}
-
-#oscillatorControls label {
-    display: block;
-    margin: 0.5em 0;
-}
-
-#oscillatorControls input[type="number"] {
-    width: 80px;
-    display: inline-block;
-    margin-left: 0.5em;
-}
-
+/* Select styling */
 #oscillatorControls select {
     font-size: 1em;
     padding: 0.5em;
 }
 
+/* Button specific styles */
+#generateBtn, #playBtn {
+    width: 100%;
+    background-color: #333;
+    margin-top: 1em;
+}
+
+#generateBtn {
+    margin-top: 2em;
+}
+
+#generateBtn:hover, #playBtn:hover {
+    background-color: #555;
+}
+
+/* Status display */
+#status {
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+
+/* Waveform border */
 #waveform {
     border: 2px solid #fff;
     margin-top: 2em;
 }
 
+/* Note animation */
 @keyframes moveNotes {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100%); }
@@ -137,20 +146,7 @@ button:hover {
     animation: moveNotes linear infinite;
 }
 
-.note:nth-child(1) { left: 10%; top: 10%; animation-duration: 25s; }
-.note:nth-child(2) { left: 25%; top: 30%; animation-duration: 20s; }
-.note:nth-child(3) { left: 40%; top: 20%; animation-duration: 30s; }
-.note:nth-child(4) { left: 55%; top: 40%; animation-duration: 45s; }
-.note:nth-child(5) { left: 70%; top: 10%; animation-duration: 28s; }
-.note:nth-child(6) { left: 85%; top: 25%; animation-duration: 22s; }
-.note:nth-child(7) { left: 15%; top: 50%; animation-duration: 48s; }
-.note:nth-child(8) { left: 30%; top: 70%; animation-duration: 26s; }
-
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
+/* Responsive design */
 @media (max-width: 768px) {
     .controls-container {
         flex-direction: column;
@@ -163,3 +159,4 @@ html, body {
         padding: 0.5em;
     }
 }
+
